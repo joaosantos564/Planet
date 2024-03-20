@@ -2,7 +2,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 
 import Home from "../screens/Home";
 import Profile from "../screens/Profile";
-import MyPlanets from "../screens/MyPlanets";
+import MyPlanets from "../screens/Create";
 
 const Drawer = createDrawerNavigator();
 
@@ -11,7 +11,7 @@ const DrawerRoutes = () => {
     <Drawer.Navigator>
       <Drawer.Screen name="Home" component={Home} />
       <Drawer.Screen name="Profile" component={Profile} />
-      <Drawer.Screen name="MyPlanets" component={MyPlanets} />
+      <Drawer.Screen name="Create" component={Create} />
     </Drawer.Navigator>
   );
 };

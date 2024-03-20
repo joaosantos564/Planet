@@ -9,13 +9,6 @@ export default function Home() {
   return (
     <View style={styles.container}>
       <Title title="Home - Hello" />
-
-      <TouchableOpacity
-        style={styles.btn}
-        onPress={() => navigation.navigate("Profile", { user })}
-      >
-        <Text style={styles.buttonText}>Ver Perfil</Text>
-      </TouchableOpacity>
     </View>
   );
 }
