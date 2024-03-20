@@ -2,7 +2,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 
 import Home from "../screens/Home";
 import Profile from "../screens/Profile";
-import MyPlanets from "../screens/Create";
+import Create from "../screens/Create";
 
 const Drawer = createDrawerNavigator();
 

@@ -2,7 +2,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Feather } from "@expo/vector-icons";
 import Home from "../screens/Home";
 import Profile from "../screens/Profile";
-import Create from "../screens/Create";
 import StackRoutes from "./stack.routes";
 
 const Tab = createBottomTabNavigator();
@@ -17,7 +16,7 @@ const TabRoutes = () => {
           tabBarLabel: "Home",
           tabBarIcon: ({ focused }) => (
             <Feather
-              name="grid"
+              name="home"
               color={focused ? "#06f" : "#d6d6d6"}
               size={20}
             />
@@ -29,9 +28,10 @@ const TabRoutes = () => {
         component={StackRoutes}
         options={{
           tabBarLabel: "Criador",
+          tabBarLabelStyle: { color: "red" },
           tabBarIcon: ({ focused }) => (
             <Feather
-              name="home"
+              name="globe"
               color={focused ? "#06f" : "#d6d6d6"}
               size={20}
             />

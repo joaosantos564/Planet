@@ -8,9 +8,6 @@ export default function Profile({ route }) {
   return (
     <View style={styles.container}>
       <Title title={"Profile"} />
-      <Text>Nome:{user.name}</Text>
-      <Text>Idade:{user.age}</Text>
-      <Text>Nome:{user.email}</Text>
     </View>
   );
 }
