@@ -20,6 +20,7 @@ export default function PlaExisting({ route }) {
         <Text style={styles.text}>{data.titulo}</Text>
         <Text style={styles.text}>{data.data}</Text>
         <Text style={styles.text}>{data.loc}</Text>
+        <Text style={styles.text}>{data.populacao}</Text>
         <Text style={styles.text}>{data.cor1}</Text>
         <Text style={styles.text}>{data.cor2}</Text>
       </View>

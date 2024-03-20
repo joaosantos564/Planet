@@ -1,4 +1,4 @@
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Text, TextInput, TouchableOpacity, View, Alert } from "react-native";
 import { useState } from "react";
 import React from "react";
 import Title from "../../components/Title";
@@ -22,20 +22,38 @@ export default function Create() {
   const [titulo, setTitulo] = useState("");
   const [data, setData] = useState("");
   const [loc, setLoc] = useState("");
+  const [populacao, setPopulacao] = useState("");
   const [cor1, setCor1] = useState("");
   const [cor2, setCor2] = useState("");
+  const [erro, setErro] = useState("");
 
   const handleValidar = () => {
-    if (email === "" || senha === "") {
-      Alert.alert("Erro", "Por favor, preencha todos os campos.");
-      return;
+    if (
+      name === "" ||
+      governante === "" ||
+      titulo === "" ||
+      data === "" ||
+      loc === "" ||
+      populacao === "" ||
+      cor1 === "" ||
+      cor2 === ""
+    ) {
+      setErro("Por favor, preencha todos os campos.");
+      setTimeout(() => {
+        setErro("");
+      }, 3000); // Tempo limite de 3 segundos para limpar a mensagem de erro
+    } else {
+      setErro("");
+      enviarFormulario();
     }
+  };
 
-    // Outras validações podem ser adicionadas aqui
-
-    // Se todas as validações passarem, envie o formulário
-
-    enviarFormulario();
+  const enviarFormulario = () => {
+    // Aqui você pode enviar os dados do formulário para um servidor, fazer uma requisição HTTP, etc.
+    // Simulando o envio por 2 segundos
+    setTimeout(() => {
+      Alert.alert("Sucesso", "Formulário enviado com sucesso.");
+    }, 2000);
   };
 
   const [allPlanets, setAllPlanets] = useState([]);
@@ -48,6 +66,7 @@ export default function Create() {
       titulo,
       parseInt(data) || 0,
       loc,
+      populacao,
       cor1,
       cor2
     ); // Incrementa o ID após o uso
@@ -66,12 +85,14 @@ export default function Create() {
     setTitulo("");
     setData("");
     setLoc("");
+    setPopulacao("");
     setCor1("");
     setCor2("");
   };
 
   return (
     <View style={styles.container}>
+      {erro !== "" && <Text style={{ color: "red" }}>{erro}</Text>}
       <Title title={"Create"} />
 
       <View>
@@ -101,10 +122,16 @@ export default function Create() {
           keyboardType="numeric"
         />
         <TextInput
-          placeholder="localiação"
+          placeholder="localização"
           style={styles.planetInput}
           onChangeText={setLoc}
           value={loc}
+        />
+        <TextInput
+          placeholder="população"
+          style={styles.planetInput}
+          onChangeText={setPopulacao}
+          value={populacao}
         />
         <TextInput
           placeholder="cor primária"
@@ -119,7 +146,13 @@ export default function Create() {
           value={cor2}
         />
 
-        <TouchableOpacity style={styles.button} onPress={createPlanet}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            handleValidar();
+            createPlanet();
+          }}
+        >
           <Text>Criar Planeta</Text>
         </TouchableOpacity>
       </View>

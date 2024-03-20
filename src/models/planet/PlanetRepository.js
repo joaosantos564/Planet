@@ -19,7 +19,7 @@ export default class PlanetRepository {
     this.planets = this.planets.filter((planet) => planet.id !== id);
   }
 
-  update(id, name, data, loc, governante, titulo, cor1, cor2) {
+  update(id, name, data, loc, governante, populacao, titulo, cor1, cor2) {
     const planet = this.get(id);
 
     if (planet) {
@@ -29,6 +29,7 @@ export default class PlanetRepository {
       this.titulo = titulo;
       this.data = data;
       this.loc = loc;
+      this.populacao = populacao;
       this.cor1 = cor1;
       this.cor2 = cor2;
     }
