@@ -1,32 +1,37 @@
-export default class UserRepository {
+export default class PlanetRepository {
   constructor() {
-    this.users = [];
+    this.planets = [];
   }
 
   getAll() {
-    return this.users;
+    return this.planets;
   }
 
-  getUserById(id) {
-    return this.users.find((user) => user.id == id);
+  get(id) {
+    return this.planets.find((planet) => planet.id === id);
   }
 
-  addUser(user) {
-    this.users.push(user);
+  add(planet) {
+    this.planets.push(planet);
   }
 
   remove(id) {
-    this.users = this.users.filter((user) => user.id);
+    this.planets = this.planets.filter((planet) => planet.id !== id);
   }
 
-  update(id, name, email) {
-    const user = this.getUserById(id);
+  update(id, name, data, loc, governante, titulo, cor1, cor2) {
+    const planet = this.get(id);
 
-    if (user) {
-      user.name = name;
-      user.email = email;
+    if (planet) {
+      this.id = id;
+      this.name = name;
+      this.governante = governante;
+      this.titulo = titulo;
+      this.data = data;
+      this.loc = loc;
+      this.cor1 = cor1;
+      this.cor2 = cor2;
     }
-
-    return user;
+    return planet;
   }
 }

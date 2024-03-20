@@ -1,8 +1,9 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Feather } from "@expo/vector-icons";
 import Home from "../screens/Home";
-import Profile from "../screens/Profile";
+import PlaExisting from "../screens/PlaExisting";
 import StackRoutes from "./stack.routes";
+import { planet } from "../data/MyPlanets";
 
 const Tab = createBottomTabNavigator();
 
@@ -21,6 +22,23 @@ const TabRoutes = () => {
               size={20}
             />
           ),
+        }}
+      />
+      <Tab.Screen
+        name="PlaExisting"
+        component={PlaExisting}
+        initialParams={{ data: planet }}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Feather
+              name="square"
+              size={24}
+              color={focused ? "#131313" : "#D6D6D6"}
+            />
+          ),
+          tabBarLabel: "Planetas",
+          tabBarActiveTintColor: "#131313",
+          tabBarInactiveTintColor: "#D6D6D6",
         }}
       />
       <Tab.Screen
