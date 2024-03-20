@@ -2,7 +2,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Feather } from "@expo/vector-icons";
 import Home from "../screens/Home";
 import Profile from "../screens/Profile";
-import Category from "../screens/Category";
+import MyPlanets from "../screens/MyPlanets";
 import StackRoutes from "./stack.routes";
 
 const Tab = createBottomTabNavigator();
@@ -25,10 +25,10 @@ const TabRoutes = () => {
         }}
       />
       {/* <Tab.Screen
-        name="Category"
-        component={Category}
+        name="MyPlanets"
+        component={MyPlanets}
         options={{
-          tabBarLabel: "Categorys",
+          tabBarLabel: "MyPlanetss",
           tabBarIcon: ({ focused }) => (
             <Feather
               name="grid"
