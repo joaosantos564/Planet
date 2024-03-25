@@ -1,6 +1,5 @@
 export default class Planet {
   constructor(
-    id,
     imgLink,
     name,
     data,
@@ -11,7 +10,7 @@ export default class Planet {
     cor1,
     cor2
   ) {
-    this.id = id;
+    this.id = this.generateId();
     this.name = name;
     this.governante = governante;
     this.titulo = titulo;
@@ -20,5 +19,9 @@ export default class Planet {
     this.populacao = populacao;
     this.cor1 = cor1;
     this.cor2 = cor2;
+  }
+
+  generateId() {
+    return Math.floor(Math.random() * 1000);
   }
 }

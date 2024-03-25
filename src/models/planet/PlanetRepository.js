@@ -1,4 +1,7 @@
-export default class PlanetRepository {
+import { planet } from "../../data/MyPlanets";
+import Planet from "./Planet";
+
+class PlanetsRepository {
   constructor() {
     this.planets = [];
   }
@@ -36,3 +39,19 @@ export default class PlanetRepository {
     return planet;
   }
 }
+
+const planetsRepository = new PlanetsRepository();
+const newPlanet = new Planet(
+  planet.name,
+  planet.governante,
+  planet.titulo,
+  parseInt(planet.data) || 0,
+  planet.loc,
+  planet.populacao,
+  planet.cor1,
+  planet.cor2
+);
+
+planetsRepository.add(newPlanet);
+
+export default planetsRepository;

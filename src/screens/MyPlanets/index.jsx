@@ -1,12 +1,15 @@
 import { Text, View } from "react-native";
 import TouchButton from "../../components/TouchButton";
 
+import { useNavigation } from "@react-navigation/native";
+
 import styles from "./styles";
 import Title from "../../components/Title";
 
 import PlanetRepository from "../../models/planet/PlanetRepository";
 
 export default function MyPlanets({ route }) {
+  const navigation = useNavigation();
   const { data } = route.params;
 
   const editPlanet = () => {

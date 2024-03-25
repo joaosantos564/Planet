@@ -5,6 +5,10 @@ import PlaExisting from "../screens/PlaExisting";
 import StackRoutes from "./stack.routes";
 import { planet } from "../data/MyPlanets";
 
+import planetsRepository from "../models/planet/PlanetRepository";
+
+const planets = planetsRepository.getAll();
+
 const Tab = createBottomTabNavigator();
 
 const TabRoutes = () => {
