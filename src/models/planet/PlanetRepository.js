@@ -22,7 +22,7 @@ class PlanetsRepository {
     this.planets = this.planets.filter((planet) => planet.id !== id);
   }
 
-  update(id, name, data, loc, governante, populacao, titulo, cor1, cor2) {
+  update(id, name, governante, titulo, data, loc, populacao, cor1, cor2) {
     const planet = this.get(id);
 
     if (planet) {
