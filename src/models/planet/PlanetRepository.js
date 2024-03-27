@@ -25,16 +25,28 @@ class PlanetsRepository {
   update(id, name, governante, titulo, data, loc, populacao, cor1, cor2) {
     const planet = this.get(id);
 
+    // // console.log("id", id);
+    // // console.log("nome", name);
+    // // console.log("governante", governante);
+    // // console.log("titulo", titulo);
+    // // console.log("data", data);
+    // // console.log("loc", loc);
+    // // console.log("populacao", populacao);
+    // // console.log("cor1", cor1);
+    // // console.log("cor2", cor2);
+
+    // console.log("encontrou o planeta?", planet);
+
     if (planet) {
-      this.id = id;
-      this.name = name;
-      this.governante = governante;
-      this.titulo = titulo;
-      this.data = data;
-      this.loc = loc;
-      this.populacao = populacao;
-      this.cor1 = cor1;
-      this.cor2 = cor2;
+      planet.id = id;
+      planet.name = name;
+      planet.governante = governante;
+      planet.titulo = titulo;
+      planet.data = data;
+      planet.loc = loc;
+      planet.populacao = populacao;
+      planet.cor1 = cor1;
+      planet.cor2 = cor2;
     }
     return planet;
   }

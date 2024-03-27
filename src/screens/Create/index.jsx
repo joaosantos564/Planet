@@ -47,11 +47,11 @@ export default function Create({ route }) {
         name,
         governante,
         titulo,
+        parseInt(data) || 0,
         loc,
         populacao,
         cor1,
-        cor2,
-        parseInt(data) || 0
+        cor2
       );
       clearInputs();
     } else {
@@ -59,11 +59,11 @@ export default function Create({ route }) {
         name,
         governante,
         titulo,
+        parseInt(data) || 0,
         loc,
         populacao,
         cor1,
-        cor2,
-        parseInt(data) || 0
+        cor2
       );
       planetsRepository.add(newPlanet);
       clearInputs();

@@ -1,4 +1,4 @@
-import { Text, View, TouchableOpacity } from "react-native";
+import { Text, View, TouchableOpacity, Image } from "react-native";
 import TouchButton from "../../components/TouchButton";
 
 import { useNavigation } from "@react-navigation/native";
@@ -33,7 +33,6 @@ export default function MyPlanets({ route }) {
 
       <View style={styles.planet}>
         <View style={styles.planetDetail}>
-          <Title title="Planet" />
           <Text style={styles.text}>{data.name}</Text>
           <Text style={styles.text}>{data.governante}</Text>
           <Text style={styles.text}>{data.titulo}</Text>

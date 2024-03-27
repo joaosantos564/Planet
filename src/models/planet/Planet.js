@@ -1,15 +1,5 @@
 export default class Planet {
-  constructor(
-    imgLink,
-    name,
-    data,
-    loc,
-    governante,
-    populacao,
-    titulo,
-    cor1,
-    cor2
-  ) {
+  constructor(name, governante, titulo, data, loc, populacao, cor1, cor2) {
     this.id = this.generateId();
     this.name = name;
     this.governante = governante;

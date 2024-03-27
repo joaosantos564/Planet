@@ -17,6 +17,8 @@ export default function PlaExisting() {
     }
   }, [isFocused]);
 
+  console.log(allPlanets);
+
   return (
     <View style={styles.container}>
       <Title title="PlaExisting" />
