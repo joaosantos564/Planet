@@ -3,7 +3,6 @@ import styles from "./styles";
 import Title from "../../components/Title";
 
 export default function Home() {
-  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <Title title="Home - Hello" />

@@ -1,8 +1,10 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Feather } from "@expo/vector-icons";
+
 import Home from "../screens/Home";
+import MyPlanets from "../screens/MyPlanets";
+import Create from "../screens/Create";
 import PlaExisting from "../screens/PlaExisting";
-import StackRoutes from "./stack.routes";
 import { planet } from "../data/MyPlanets";
 
 import planetsRepository from "../models/planet/PlanetRepository";
@@ -13,29 +15,34 @@ const Tab = createBottomTabNavigator();
 
 const TabRoutes = () => {
   return (
-    <Tab.Navigator screenOptions={{ headerShown: false }}>
+    <Tab.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="Home"
+    >
       <Tab.Screen
         name="Home"
         component={Home}
         options={{
-          tabBarLabel: "Home",
           tabBarIcon: ({ focused }) => (
             <Feather
               name="home"
-              color={focused ? "#06f" : "#d6d6d6"}
-              size={20}
+              size={24}
+              color={focused ? "#131313" : "#D6D6D6"}
             />
           ),
+          tabBarLabel: "Inicial",
+          tabBarActiveTintColor: "#131313",
+          tabBarInactiveTintColor: "#D6D6D6",
         }}
       />
       <Tab.Screen
         name="PlaExisting"
         component={PlaExisting}
-        initialParams={{ data: planet }}
+        initialParams={{ planets }}
         options={{
           tabBarIcon: ({ focused }) => (
             <Feather
-              name="square"
+              name="check-circle"
               size={24}
               color={focused ? "#131313" : "#D6D6D6"}
             />
@@ -46,48 +53,42 @@ const TabRoutes = () => {
         }}
       />
       <Tab.Screen
-        name="Criador"
-        component={StackRoutes}
+        name="MyPlanets"
+        component={MyPlanets}
+        initialParams={{ data: planet }}
         options={{
-          tabBarLabel: "Criador",
-          tabBarLabelStyle: { color: "red" },
+          tabBarItemStyle: {
+            display: "none",
+          },
           tabBarIcon: ({ focused }) => (
             <Feather
-              name="globe"
-              color={focused ? "#06f" : "#d6d6d6"}
-              size={20}
+              name="target"
+              size={24}
+              color={focused ? "#131313" : "#D6D6D6"}
             />
           ),
-        }}
-      />
-      {/* <Tab.Screen
-        name="Create"
-        component={Create}
-        options={{
-          tabBarLabel: "Create",
-          tabBarIcon: ({ focused }) => (
-            <Feather
-              name="grid"
-              color={focused ? "#06f" : "#d6d6d6"}
-              size={20}
-            />
-          ),
+          tabBarLabel: "Meus",
+          tabBarActiveTintColor: "#131313",
+          tabBarInactiveTintColor: "#D6D6D6",
         }}
       />
       <Tab.Screen
-        name="Profile"
-        component={Profile}
+        name="Create"
+        component={Create}
+        initialParams={{ planet: null, edit: false }}
         options={{
-          tabBarLabel: "Profile",
           tabBarIcon: ({ focused }) => (
             <Feather
-              name="user"
-              color={focused ? "#06f" : "#d6d6d6"}
-              size={20}
+              name="plus"
+              size={24}
+              color={focused ? "#131313" : "#D6D6D6"}
             />
           ),
+          tabBarLabel: "Criador",
+          tabBarActiveTintColor: "#131313",
+          tabBarInactiveTintColor: "#D6D6D6",
         }}
-      /> */}
+      />
     </Tab.Navigator>
   );
 };

@@ -1,24 +1,15 @@
-import { Text, TextInput, TouchableOpacity, View, Alert } from "react-native";
-import { useState } from "react";
-import React from "react";
-import Title from "../../components/Title";
-import styles from "./styles";
-
+import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import Planet from "../../models/planet/Planet";
-import PlanetRepository from "../../models/planet/PlanetRepository";
-import { planet } from "../../data/MyPlanets";
-import TouchButton from "../../components/TouchButton";
+import { useState, useEffect } from "react";
+
+import styles from "./styles";
+import Title from "../../components/Title";
+
 import planetsRepository from "../../models/planet/PlanetRepository";
-
-const planetsList = new PlanetRepository();
-
-let planetId = 1; // Inicia o ID do usuário
+import Planet from "../../models/planet/Planet";
 
 export default function Create({ route }) {
   let { planet, edit } = route.params;
-
-  const navigation = useNavigation();
 
   const [name, setName] = useState("");
   const [governante, setGovernante] = useState("");
@@ -31,12 +22,14 @@ export default function Create({ route }) {
   const [erro, setErro] = useState("");
   const [isUpdate, setIsUpdate] = useState(edit);
 
+  const navigation = useNavigation();
+
   useEffect(() => {
     if (edit) {
       setName(planet.name);
       setGovernante(planet.governante);
       setTitulo(planet.titulo);
-      setData(String(user.data));
+      setData(String(planet.data));
       setLoc(planet.loc);
       setPopulacao(planet.populacao);
       setCor1(planet.cor1);
@@ -54,11 +47,11 @@ export default function Create({ route }) {
         name,
         governante,
         titulo,
-        parseInt(data) || 0,
         loc,
         populacao,
         cor1,
-        cor2
+        cor2,
+        parseInt(data) || 0
       );
       clearInputs();
     } else {
@@ -66,16 +59,29 @@ export default function Create({ route }) {
         name,
         governante,
         titulo,
-        parseInt(data) || 0,
         loc,
         populacao,
         cor1,
-        cor2
+        cor2,
+        parseInt(data) || 0
       );
       planetsRepository.add(newPlanet);
       clearInputs();
     }
-    navigation.navigate("Planets");
+    navigation.navigate("PlaExisting");
+  };
+
+  const clearInputs = () => {
+    setIsUpdate(false);
+    edit = false;
+    setName("");
+    setGovernante("");
+    setTitulo("");
+    setData("");
+    setLoc("");
+    setPopulacao("");
+    setCor1("");
+    setCor2("");
   };
 
   // const handleValidar = () => {
@@ -107,43 +113,8 @@ export default function Create({ route }) {
   //   }, 2000);
   // };
 
-  // const [allPlanets, setAllPlanets] = useState([]);
-
-  // const createPlanet = () => {
-  //   const newPlanet = new Planet(
-  //     planetId++,
-  //     name,
-  //     governante,
-  //     titulo,
-  //     parseInt(data) || 0,
-  //     loc,
-  //     populacao,
-  //     cor1,
-  //     cor2
-  //   ); // Incrementa o ID após o uso
-
-  //   planetsList.add(newPlanet);
-  //   setAllPlanets(planetsList.getAll());
-
-  //   clearInputs();
-
-  //   return newPlanet;
-  // };
-
-  const clearInputs = () => {
-    setName("");
-    setGovernante("");
-    setTitulo("");
-    setData("");
-    setLoc("");
-    setPopulacao("");
-    setCor1("");
-    setCor2("");
-  };
-
   return (
     <View style={styles.container}>
-      {/* {erro !== "" && <Text style={{ color: "red" }}>{erro}</Text>} */}
       <Title title={isUpdate ? "Editar Planeta" : "Novo Planeta"} />
 
       <TextInput
@@ -165,9 +136,9 @@ export default function Create({ route }) {
         value={titulo}
       />
       <TextInput
-        placeholder="Digite a data de conquista"
+        placeholder="Digite a data do planeta"
         style={styles.planetInput}
-        onChangeText={(text) => setData(text)}
+        onChangeText={setData}
         value={data}
         keyboardType="numeric"
       />

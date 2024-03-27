@@ -1,4 +1,4 @@
-import { Text, View } from "react-native";
+import { Text, View, TouchableOpacity } from "react-native";
 import TouchButton from "../../components/TouchButton";
 
 import { useNavigation } from "@react-navigation/native";
@@ -6,19 +6,19 @@ import { useNavigation } from "@react-navigation/native";
 import styles from "./styles";
 import Title from "../../components/Title";
 
-import PlanetRepository from "../../models/planet/PlanetRepository";
+import planetsRepository from "../../models/planet/PlanetRepository";
 
 export default function MyPlanets({ route }) {
   const navigation = useNavigation();
   const { data } = route.params;
 
   const editPlanet = () => {
-    navigation.navigate("Form", { planet: data, edit: true });
+    navigation.navigate("Create", { planet: data, edit: true });
   };
 
   const deletePlanet = () => {
-    PlanetRepository.remove(data.id);
-    navigation.navigate("Planets");
+    planetsRepository.remove(data.id);
+    navigation.navigate("PlaExisting");
   };
 
   return (
